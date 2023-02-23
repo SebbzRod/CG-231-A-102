@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Titulo</title>
+        <title>Taller de computacion grafica</title>
         <style>
             html, body { margin: 0; padding: 0; overflow: hidden; }
             #text {
@@ -14,9 +14,9 @@
         </style>
     </head>
     <body>
-        <div id="text">Titulo<br/>
-            Subtitulo<br/>
-            Descripción<br/>
+        <div id="text">Computacion grafica<br/>
+            Juan Seastian Rodriguez Rodriguez<br/>
+            Creación de un cubo y aplicacion de transformadas<br/>
         </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r94/three.min.js"></script>
     <script>
@@ -73,7 +73,7 @@
             var geometry = new THREE.Geometry();
             var vertices = [
                 new THREE.Vector3((posini[0] + lado/2), (posini[1] + lado/2), (posini[2] + lado/2)),
-                new THREE.Vector3(lado,(posini[1] + lado/2), (posini[2] + lado/2)),
+                new THREE.Vector3(lado, (posini[1] + lado/2), (posini[2] + lado/2)),
                 new THREE.Vector3(lado, lado, (posini[2] + lado/2)),
                 new THREE.Vector3((posini[0] + lado/2), lado, (posini[2] + lado/2)),
                 new THREE.Vector3((posini[0] + lado/2), (posini[1] + lado/2), lado),
@@ -83,8 +83,11 @@
             ];
 
             /**
-             * Se usa el arreglo aristas para definir las lineas entre los distintos
+             * Se usa el array aristas para definir las lineas entre los distintos
              * vertices del cubo
+             * 
+             * !Al solo requerir de las lineas que construyen el cubo no es necesario usar el Face3 ya que 
+             * !este genera las caras de forma distinra 
             **/
             
             var aristas = [
@@ -99,19 +102,23 @@
             var geometry = new THREE.Geometry();
             var material = new THREE.LineBasicMaterial({ color: color });
 
-            //Funcion "for" para generar las aristas antes definidas
+            //Funcion for para generar las aristas antes definidas
             for (var i = 0; i < aristas.length; i++) {
                 var edge = aristas[i];
                 geometry.vertices.push(vertices[edge[0]], vertices[edge[1]]);
             }
+
             var cubo = new THREE.LineSegments(geometry, material);
         
             return cubo;
         }
 
-        //Crear cubo
+        //Crear cUBO
+
+        var lado = 30; 
+        //CUBO ORIGINAL 
         var cube = Crear_Cubo([0, 0, 0], lado, 0xff0000);
-        //CUBO TRASLACION
+        //CUBO TRASLASION
         var cube_T = Crear_Cubo([0, 0, 0], lado, 0x00ff00);
         //CUBO ESCALADO
         var cube_E = Crear_Cubo([0, 0, 0], lado, 0x00ffff);
@@ -156,7 +163,8 @@
             cube_F.applyMatrix(matrizR);
 
         document.body.appendChild(renderer.domElement);
-            
+        
+        
         //Añadir los elementos creados a la escena
         scene.add(cube);
         scene.add(cube_T);
