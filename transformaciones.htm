@@ -83,7 +83,7 @@
             ];
 
             /**
-             * Se usa la varibale aristas para generar las lineas entre los distintos
+             * Se usa el array aristas para definir las lineas entre los distintos
              * vertices del cubo
              * 
              * !Al solo requerir de las lineas que construyen el cubo no es necesario usar el Face3 ya que 
@@ -102,7 +102,7 @@
             var geometry = new THREE.Geometry();
             var material = new THREE.LineBasicMaterial({ color: color });
 
-            //
+            //Funcion for para generar las aristas antes definidas
             for (var i = 0; i < aristas.length; i++) {
                 var edge = aristas[i];
                 geometry.vertices.push(vertices[edge[0]], vertices[edge[1]]);
@@ -114,9 +114,9 @@
 
         //Crear cubo
         var cube = Crear_Cubo([0, 0, 0], 30, 0x00ff00 );
-        var cube_T = Crear_Cubo([0, 0, 0], 30, 0x00ff00 );
-        var cube_E = Crear_Cubo([-10, -10, -10], 30, 0x00ff00 );
-        var cube_R = Crear_Cubo([0, 0, 0], 30, 0x00ff00 );
+        var cube_T = Crear_Cubo([0, 0, 0], 30, 0xff0000 );
+        var cube_E = Crear_Cubo([-10, -10, -10], 30, 0x00ffff);
+        var cube_R = Crear_Cubo([0, 0, 0], 30, 0x0000ff );
 /* 
         //Matriz de traslacion 
         var matrizT = new THREE.Matrix4();
